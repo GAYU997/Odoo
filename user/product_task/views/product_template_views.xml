@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<odoo>
+    #tree or list/tree view of product
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="name">Product Details</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="product_brand" string="Product Brand"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">Product Details</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='detailed_type']" position="after">
+                <field name="product_master_type" string="Product Master Type"/>
+            </xpath>
+
+            <xpath expr="//field[@name='sale_ok']" position="before">
+                <group>
+<!--                <label for="product_brand" string="Product Brand" attrs="{'invisible': [('product_master_type','=','Single_Product')]}"/>-->
+                <field name="product_brand" string="Product Brand"
+                       attrs="{'invisible':
+                       [('product_master_type','=','Single_Product')]}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<odoo>
+       <menuitem id="research_management_menu_root" name="Research Management">
+            <menuitem id="research_management_menu_action" name="Research Management">
+                 <menuitem id="research_fields_menu_action" action="research_fields_action"/>
+            </menuitem>
+       </menuitem>
+           <menuitem id="research_management_menu"
+                     parent="research_management_menu_action" sequence="11" action="book_reservation_action"/>
+</odoo>

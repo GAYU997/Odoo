@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="research_fields_action" model="ir.actions.act_window">
+        <field name="name">Research Scholar</field>
+        <field name="res_model">research.fields</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    # tree/list view
+
+    <record id="research_menu_action_tree" model="ir.ui.view">
+        <field name="name">research.fields.tree</field>
+        <field name="model">research.fields</field>
+        <field name="arch" type="xml">
+            <tree string="list_view">
+                <field name="name"/>
+                <field name="scholar_id"/>
+                <!--<field name="scholar_name"/>-->
+                <field name="age"/>
+                <field name="sex"/>
+            </tree>
+        </field>
+    </record>
+
+    #form view
+    <record id="research_menu_action_form" model="ir.ui.view">
+        <field name="name">research.fields.form</field>
+        <field name="model">research.fields</field>
+         <field name="arch" type="xml">
+             <form string="research">
+                <sheet>
+                    <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="scholar_id"/>
+                            </group>
+                            <group>
+                                <field name="age"/>
+                            </group>
+                            <group>
+                                <!--<field name="scholar_name"/>-->
+                                <field name="middle_name"/>
+                                <field name="last_name"/>
+                            </group>
+                            <group>
+                                <field name="sex"/>
+                            </group>
+                    </group>
+                        <notebook>
+                            <page string="Institute_Information">
+                                <field name="institute_information"/></page>
+                            <page string ="Other_Information">
+                                <field name="other_information"/>
+                                  <group>
+                                      <field name = "related_partner"
+                                             domain="[('is_scholar','!=','')]"/>
+                                  </group>
+                            </page>
+                        </notebook>
+                </sheet>
+             </form>
+         </field>
+    </record>
+
+   <record id="research_menu_action_search" model="ir.ui.view">
+        <field name="name">research.fields.search</field>
+        <field name="model">research.fields</field>
+         <field name="arch" type="xml">
+             <search string="research">
+                     <field name = "name"/>
+                     <field name = "related_partner"/>
+             </search>
+         </field>
+   </record>
+
+</odoo>

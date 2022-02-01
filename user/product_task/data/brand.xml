@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="b1" model="product.brand">
+        <field name="name">SamSung</field>
+    </record>
+    <record id="b2"  model="product.brand">
+         <field name="name">Apple</field>
+    </record>
+</odoo>

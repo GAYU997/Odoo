@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="estate_property_action" model="ir.actions.act_window">
+        <field name="name">property</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    #tree or list view
+ <record id="estate_property_views_tree" model="ir.ui.view">
+        <field name="name">estate.property.tree</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="list_view">
+                <field name="name"/>
+                <field name="expected_price"/>
+                <field name="last_seen"/>
+                <field name="date_availability"/>
+                <field name="selling_price"/>
+                <field name="garden_area"/>
+                <field name="bedrooms"/>
+            </tree>
+        </field>
+ </record>
+
+#form view
+    <record id="estate_property_views_form" model="ir.ui.view">
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="estate">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="last_seen"/>
+                        </group>
+                        <group>
+                            <field name="expected_price"/>
+                        </group>
+                        <group>
+                            <field name="postcode"/>
+                        </group>
+                        <group>
+                            <field name="date_availability"/>
+                        </group>
+                        <group>
+                            <field name="selling_price"/>
+                        </group>
+                        <group>
+                            <field name="bedrooms"/>
+                        </group>
+                        <group>
+                            <field name="living_area"/>
+                        </group>
+                        <group>
+                            <field name="garage"/>
+                        </group>
+                        <group>
+                            <field name="garden"/>
+                        </group>
+                        <group>
+                            <field name="garden_area"/>
+                        </group>
+                        <group>
+                            <field name="Active"/>
+                        </group>
+                        <group>
+                            <field name="state"/>
+                        </group>
+                        <group>
+                            <field name="garden_orientation"/>
+                        </group>
+                        </group>
+                       <notebook>
+                         <page string="Description">
+                        <field name="description"/>
+                      </page>
+                       </notebook>
+                </sheet>
+          </form>
+        </field>
+   </record>
+
+#search bar view
+     <record id="estate_property_views_search" model="ir.ui.view">
+        <field name="name">estate.property.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="estate">
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="living_area"/>
+                <field name="bedrooms"/>
+                <field name="expected_price"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('Active', '=', False)]"/>
+                <filter string="last_seen" name="inactive" domain="[('last_seen', '=', False)]"/>
+                <filter string="North" name="garden_orientation" domain="[('garden_orientation', '=','North')]"/>
+
+
+                    <group expand="1" string="Group By">
+                        <filter string="Date availability" name="date_availability" context="{'group_by':'date_availability'}"/>
+                    </group>
+                   <group>
+                        <filter string="Postcode" name=" postcode " context="{'group_by':'postcode'}"/>
+                   </group>
+
+            </search>
+        </field>
+     </record>
+</odoo>
+
+
+
+
+
+
+

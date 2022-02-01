@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="book_reservation_action" model="ir.actions.act_window">
+        <field name="name">Book Reservation</field>
+        <field name="res_model">book.reservation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="book_reservation_action_tree" model="ir.ui.view">
+        <field name="name">book.reservation.tree</field>
+        <field name="model">book.reservation</field>
+        <field name="arch" type="xml">
+            <tree string="list_view">
+                <field name="scholar_id"/>
+                <field name="Responsible"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="book_reservation_action_form" model="ir.ui.view">
+        <field name="name">book.reservation.form</field>
+        <field name="model">book.reservation</field>
+        <field name="arch" type="xml">
+            <form string="book">
+                <sheet>
+                    <group>
+                    <field name="scholar_id"/>
+                    <field name="Responsible"/>
+                    </group>
+                    <notebook>
+                    <group>
+                    <field name="books" domain="[('is_book','!=','')]"/>
+                    </group>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<record id="book_reservation_action_search" model="ir.ui.view">
+        <field name="name">book.reservation.form</field>
+        <field name="model">book.reservation</field>
+        <field name="arch" type="xml">
+            <search string="book">
+                <group expand="1" string="Group By">
+                        <filter string="Scholar" name="scholar" context="{'group_by':'scholar_id'}"/>
+                     </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>
